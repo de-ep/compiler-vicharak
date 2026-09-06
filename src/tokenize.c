@@ -1,9 +1,26 @@
 #include "tokenize.h"
+#include <stdio.h>
 
-void print_tokens(Tokens tokens) {
-    puts("TOKENS:");
+void print_token(const Token *token) {
+    if (!token){
+        puts("NULL");
+        return;
+    }
+    
+    printf (
+        "token type: %d, token len: %zu, token: %.*s\n",
+        token->token_type, 
+        token->str_len, 
+        token->str_len, 
+        token->str
+    );
+
+}
+
+void print_tokens(const Tokens tokens) {
+    puts("\nTOKENS:");
     for (int i = 0 ; i < tokens.no_of_tokens ; i++) {
-        printf ("token type: %d, token len: %zul, token: %.*s\n",tokens.token[i].token_type, tokens.token[i].str_len, tokens.token[i].str_len, tokens.token[i].str);
+        printf ("token type: %d, token len: %zu, token: %.*s\n",tokens.token[i].token_type, tokens.token[i].str_len, tokens.token[i].str_len, tokens.token[i].str);
     }
 }
 
@@ -62,7 +79,7 @@ Tokens tokenize(File file) {
 
                 if (isalpha(*curr_char)) {
                     token.token_type = TokenType_identifier;
-                    while (isalnum(*curr_char) && (cursor + token.str_len) < file.data_len) {        //for now we will assume that a variable can only contain alpha
+                    while (isalnum(*curr_char) && (cursor + token.str_len) < file.data_len) {
                         token.str_len++;
                         curr_char++;
                     }
@@ -97,7 +114,7 @@ Tokens tokenize(File file) {
                     token.token_type = TokenTypeUndefined;
                     token.str_len++;
                 }
-                break;
+                
         
         }
 

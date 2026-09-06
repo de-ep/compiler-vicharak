@@ -1,3 +1,4 @@
+#include "parser.h"
 #include "utils.h"
 #include "tokenize.h"
 
@@ -17,6 +18,10 @@ int main (int argc, char *argv[]) {
     Tokens tokens = tokenize(file);
 
     print_tokens(tokens);
+
+    Ast ast = parse(tokens);
+    print_ast(&ast);
+
 
     return EXIT_SUCCESS;
 }

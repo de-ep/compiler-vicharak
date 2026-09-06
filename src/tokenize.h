@@ -44,6 +44,7 @@ typedef struct {
     size_t no_of_tokens;
 } Tokens;
 
+void print_token(const Token *token);
 void print_tokens(Tokens tokens);
 Tokens tokenize(File file);
 

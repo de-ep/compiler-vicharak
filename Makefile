@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O2 -Wall -Wextra -g
 TARGET = compiler
-OBJS = main.o tokenize.o parser.o utils.o 
+OBJS = main.o tokenize.o parser.o codegen.o utils.o 
 
 all: $(TARGET)
 
@@ -16,6 +16,9 @@ tokenize.o: src/tokenize.c
 
 parser.o: src/parser.c
 		$(CC) -c src/parser.c $(CFLAGS)
+
+codegen.o: src/parser.c
+		$(CC) -c src/codegen.c $(CFLAGS)
 
 utils.o: src/utils.c 
 		$(CC) -c src/utils.c $(CFLAGS)
