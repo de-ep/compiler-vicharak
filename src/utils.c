@@ -58,3 +58,15 @@ File read_file(const char *pathname) {
 
     return file;
 }
+
+bool write_to_file(const char *pathname, const char *buf, const size_t buf_len) {
+    bool err = false;
+
+    FILE *file = fopen(pathname, "w");
+    if (!file) {
+        perror("fopen failed");
+        return false;
+    }
+
+    fwrite(buf, 1, buf_len, file);
+}

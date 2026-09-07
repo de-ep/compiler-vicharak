@@ -17,7 +17,7 @@ tokenize.o: src/tokenize.c
 parser.o: src/parser.c
 		$(CC) -c src/parser.c $(CFLAGS)
 
-codegen.o: src/parser.c
+codegen.o: src/codegen.c
 		$(CC) -c src/codegen.c $(CFLAGS)
 
 utils.o: src/utils.c 

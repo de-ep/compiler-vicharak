@@ -47,7 +47,8 @@ bool insert_block_node(Ast *ast, AstNode *node) {
 
 AstNode *parse_operation(Ast *ast) {        //validate the end of operation
     if (ast->token_cursor+3 >= ast->tokens.no_of_tokens) {
-        exit(2);
+        fprintf(stderr, "ran out of tokens\n");
+        return NULL;
     }
     size_t i = 0;
 
@@ -102,7 +103,8 @@ AstNode *parse_operation(Ast *ast) {        //validate the end of operation
 AstNode *parse_assign(Ast *ast) {
     size_t intial_node_buf_cursor = ast->ast_node_buf_cursor;
     if (ast->token_cursor+3 >= ast->tokens.no_of_tokens) {
-        exit(3);
+        fprintf(stderr, "ran out of tokens\n");
+        return NULL;
     }
     size_t i = 0;
 
@@ -154,9 +156,9 @@ AstNode *parse_assign(Ast *ast) {
 }
 
 AstNode *parse_declaration(Ast *ast) {
-    if (ast->token_cursor+2 >= ast->tokens.no_of_tokens) {
-        printf("token cursor : %zu, no of tokens: %zu", ast->token_cursor, ast->tokens.no_of_tokens);
-        exit(6);
+    if (ast->token_cursor+2 >= ast->tokens.no_of_tokens)  {
+        fprintf(stderr, "ran out of tokens\n");
+        return NULL;
     }
     size_t i = 0;
 
@@ -177,7 +179,7 @@ AstNode *parse_declaration(Ast *ast) {
     AstNode *lnode = NULL;
     if (next_next_token->token_type == TokenType_operator_assign) {
         ast->token_cursor -= 2;
-        print_token(&ast->tokens.token[ast->token_cursor]);
+        //print_token(&ast->tokens.token[ast->token_cursor]);
         lnode = parse_assign(ast);
     }
     
@@ -196,8 +198,9 @@ AstNode *parse_declaration(Ast *ast) {
 }
 
 AstNode *parse_equal(Ast *ast) {    //check if equality ends with )
-    if (ast->token_cursor+2 >= ast->tokens.no_of_tokens) {
-        exit(4);
+    if (ast->token_cursor+2 >= ast->tokens.no_of_tokens)  {
+        fprintf(stderr, "ran out of tokens\n");
+        return NULL;
     }
     size_t i = 0;
 
@@ -235,8 +238,9 @@ AstNode *parse_equal(Ast *ast) {    //check if equality ends with )
 
 AstNode *parse_if(Ast *ast) {    
     size_t intial_node_buf_cursor = ast->ast_node_buf_cursor;
-    if (ast->token_cursor+3 >= ast->tokens.no_of_tokens) {
-        exit(5);
+    if (ast->token_cursor+3 >= ast->tokens.no_of_tokens)  {
+        fprintf(stderr, "ran out of tokens\n");
+        return NULL;
     }
     size_t i = 0;
 
@@ -291,8 +295,13 @@ AstNode *parse_if(Ast *ast) {
         switch (cur_token->token_type) {
         
             case TokenType_keyword_int :
+                fprintf(stderr, "declaration under if codeblocks are not supported for now\n");
+                ast->token_cursor++;
+                cur_token = &ast->tokens.token[ast->token_cursor];
+                continue;
+            /*
                 tmp_node = parse_declaration(ast);
-                break;
+                break;*/
             case TokenType_identifier : 
                 tmp_node = parse_assign(ast);
                 break;
@@ -396,6 +405,8 @@ Ast parse(Tokens tokens) {
        if (!node) continue; 
        insert_block_node(&ast, node);
     }
+
+    ast.token_cursor = 0;
 
     return ast;
 }

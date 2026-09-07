@@ -1,0 +1,4 @@
+*.o
+compiler
+*.txt
+/8bit-compiler/

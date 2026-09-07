@@ -32,6 +32,7 @@ typedef struct {
     size_t ast_node_buf_cursor;
 } Ast;
 
+void print_node(const AstNode *node);
 void print_ast (const Ast *ast);
 Ast parse(Tokens tokens);
 
