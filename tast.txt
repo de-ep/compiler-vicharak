@@ -1,0 +1,227 @@
+
+Application form for Systems Software Developer at Vicharak
+Thank you for your interest in the Systems Software Developer position at Vicharak.
+
+About Us:
+Job Title: Systems Software Developer
+Job Overview: We are looking for highly motivated and talented fresh graduates to join our revolutionary team at Vicharak. This role is for learners, doers, and dreamers who are excited to write any C/C++ code, learn any architecture, and debug any code—even from binaries. You will design specialized tools to generate Verilog/System Verilog according to the software needs and develop AI compilers tailored for our FPGA-based infrastructure. This is a unique opportunity to be at the forefront of reconfigurable computing, redefining the future of computing from the ground up.
+
+Key Responsibilities    
+    •    Architecture Interaction: Develop and optimize software-hardware interactions for Vicharak’s FPGA-based reconfigurable computing systems.
+    •    Tool Development: Create specialized tools to automatically generate Verilog/System Verilog code based on software requirements.
+    •    Compiler Design: Develop AI compilers tailored for our FPGA-based systems, ensuring seamless integration and high performance.
+    •    Innovation and R&D: Conduct research and development to explore new methodologies and technologies for reconfigurable computing.
+    •    System Integration: Work closely with hardware engineers to ensure seamless integration of software and hardware components.
+    •    Performance Optimization: Optimize system performance, focusing on speed, efficiency, and resource utilization.
+    •    Documentation and Testing: Document designs, processes, and provide comprehensive testing to ensure robust and reliable system performance.
+
+Qualifications    
+    •    Education: Bachelor’s or Master’s degree in Computer Science, Electrical Engineering, or a related field.
+    •    Skills:
+    •    Proficiency in C/C++.
+    •    Strong understanding of or willingness to learn Verilog/System Verilog.
+    •    Ability to quickly learn and adapt to new architectures.
+    •    Strong problem-solving and analytical skills.
+    •    Excellent communication and teamwork abilities.
+   •    Passion for tackling the most challenging tasks in the world of computing.
+
+Why Vicharak?
+At Vicharak, you will be part of a pioneering team dedicated to breaking new ground in the field of reconfigurable computing. You will have the opportunity to work on cutting-edge technology that redefines traditional computing paradigms. Join us in our mission to craft the next generation of computing and be part of a revolutionary journey that will shape the future of technology. 
+https://vicharak.in/
+
+Please fill out the following form to apply for this position. If your qualifications match our requirements, you will be contacted for an interview.  
+[redacted]@[redacted].com Switch account
+ 
+The name, email, and photo associated with your Google account will be recorded when you upload files and submit this form
+* Indicates required question
+Please provide your full name:
+*
+Please provide your Contact No.:
+*
+Please provide your Email-id:
+*
+Please provide your Bachelor's specialization:
+*
+Please provide your college's name:
+*
+Please provide your Graduation Year:
+*
+Please find the description of the task below:
+
+NOTE: You will have to screen record your entire screen while coding and upload the drive link in a field given below.
+
+SimpleLang: A Basic High-Level Language for an 8-bit CPU 
+
+Introduction: SimpleLang is a minimalistic high-level language designed to run on an 8-bit CPU. It includes basic constructs such as variable declarations, assignments, arithmetic operations, and conditional statements, but it does not include loops. This language aims to be easy to understand and implement for educational purposes. 
+
+Language Constructs:
+1. Variable Declaration 
+• Syntax: int ; 
+• Example: int a; 
+2. Assignment 
+• Syntax: = ; 
+• Example: a = b + c; 
+3. Arithmetic Operations 
+• Supported operators: +, - 
+• Example: a = b - c; 
+4. Conditionals 
+• Syntax: if () { } 
+• Example: if (a == b) { a = a + 1; } 
+
+
+Example Program in SimpleLang 
+
+// Variable declaration 
+int a;
+int b; 
+int c; 
+
+// Assignment 
+a = 10; 
+b = 20; 
+c = a + b; 
+
+// Conditional 
+if (c == 30) { 
+ c = c + 1; 
+} 
+
+Task for Interns: Implementing a SimpleLang Compiler 
+Objective: Create a compiler that translates SimpleLang code into assembly code for the 8-bit CPU. This task will help you understand basic compiler construction and 8-bit CPU architecture.  
+
+Task List: 
+1. Setup the 8-bit CPU Simulator 
+• Clone the 8-bit CPU repository from https://fgithub.com/lightcode/8bit-computer. 
+• Read through the README.md to understand the CPU architecture and its instruction set. 
+• Run the provided examples to see how the CPU executes assembly code. 
+
+2. Understand the 8-bit CPU Architecture 
+• Review the Verilog code in the rtl/ directory, focusing on key files such as machine.v. 
+• Identify the CPU’s instruction set, including data transfer, arithmetic, logical, branching, machine control, I/O, and stack operations. 
+
+3. Design a Simple High-Level Language (SimpleLang) 
+• Define the syntax and semantics for variable declarations, assignments, arithmetic operations, and conditionals. 
+• Document the language constructs with examples. 
+
+4. Create a Lexer 
+• Write a lexer in C/C++ to tokenize SimpleLang code. 
+• The lexer should recognize keywords, operators, identifiers, and literals. 
+
+5. Develop a Parser 
+• Implement a parser to generate an Abstract Syntax Tree (AST) from the tokens. 
+• Ensure the parser handles syntax errors gracefully. 
+
+6. Generate Assembly Code 
+• Traverse the AST to generate the corresponding assembly code for the 8-bit CPU. 
+• Map high-level constructs to the CPU’s instruction set (e.g., arithmetic operations to add, sub). 
+
+
+7. Integrate and Test 
+• Integrate the lexer, parser, and code generator into a single compiler program. 
+• Test the compiler with SimpleLang programs and verify the generated assembly code by running it on the 8-bit CPU simulator. 
+
+8. Documentation and Presentation 
+• Document the design and implementation of the compiler. 
+• Prepare a presentation to demonstrate the working of the compiler and explain design choices. 
+
+lightcode/8bit-computer 
+A simple 8-bit computer build in Verilog. 
+Stars 35 
+Language Verilog 
+
+Example Lexer in C: 
+Here is an example of a lexer that tokenizes SimpleLang code: 
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#define MAX_TOKEN_LEN 100typedef enum {
+ TOKEN_INT, TOKEN_IDENTIFIER, TOKEN_NUMBER, TOKEN_ASSIGN,
+ TOKEN_PLUS, TOKEN_MINUS, TOKEN_IF, TOKEN_EQUAL, TOKEN_LBRACE, TOKEN_RBRACE,
+ TOKEN_SEMICOLON, TOKEN_UNKNOWN, TOKEN_EOF
+} TokenType;
+typedef struct {
+ TokenType type;
+ char text[MAX_TOKEN_LEN];
+} Token;
+void getNextToken(FILE *file, Token *token) {
+ int c;
+ while ((c = fgetc(file)) != EOF) {
+ if (isspace(c)) continue;
+ if (isalpha(c)) {
+ int len = 0;
+ token->text[len++] = c;
+ while (isalnum(c = fgetc(file))) {
+ if (len < MAX_TOKEN_LEN - 1) token->text[len++] = c;
+ }
+ ungetc(c, file);
+ token->text[len] = '\0';
+ if (strcmp(token->text, "int") == 0) token->type = TOKEN_INT;
+ else if (strcmp(token->text, "if") == 0) token->type = TOKEN_IF;
+ else token->type = TOKEN_IDENTIFIER;
+ return;
+ }
+ if (isdigit(c)) {
+ int len = 0;
+ token->text[len++] = c;
+ while (isdigit(c = fgetc(file))) {
+ if (len < MAX_TOKEN_LEN - 1) token->text[len++] = c;
+ }
+ ungetc(c, file);
+ token->text[len] = '\0';
+ token->type = TOKEN_NUMBER;
+ return;
+ }
+ switch (c) {
+ case '=': token->type = TOKEN_ASSIGN; token->text[0] = '='; token->text[1] = '\0'; return;
+ // develop same for +,-,*,/,etc.
+ }
+ }
+ token->type = TOKEN_EOF;
+ token->text[0] = '\0';
+}
+int main() {
+ FILE *file = fopen("input.txt", "r");
+ if (!file) {
+ perror("Failed to open file");
+ return 1;
+ }
+ Token token;
+ do {
+ getNextToken(file, &token);
+ printf("Token: %d, Text: %s\n", token.type, token.text);
+ } while (token.type != TOKEN_EOF);
+ fclose(file);
+ return 0;
+}
+
+Conclusion: This task will guide interns through the process of understanding an 8-bit CPU and writing a simple compiler for it. By completing this project, interns will gain practical experience with compiler construction and computer architecture, which are valuable skills in the field of computer science. 
+
+PLEASE NOTE: You have to submit the form only once you finish this task, and please do mention only the link of your github repository. Do not submit the form right now mentioning anything like “I will submit the task within 7 days”, “Ok”, “Yes”, “I will do that”, etc. etc. Your response will be automatically terminated and you wont be able to submit the github repo link again.
+
+Do not use AI tool to complete the code submission, we have a special AI detection tool which reviews the code for 10+ different AI models and we will not revert back if your code has more than 20% of AI generated content.
+
+The duration of the task is 7days. Make a private github repository, and add this username in collaborator, "recruit-vicharak"
+
+If you have any queries, please feel free to contact us on join-the-team@vicharak.in
+
+Once you complete the task, share the link of your github repository in the response field below:
+*
+Please upload the Google Drive link of the screen recording:
+*
+
+Are you open to relocate to Surat, Gujarat?
+*
+Yes
+No
+You will have to go through an internship of 4 to 6 months before we convert you to a full-time employee. Are you okay with that?
+*
+Yes
+No
+Please upload your resume below
+*
+Upload 1 supported file: PDF. Max 1 GB.
+Never submit passwords through Google Forms.
+This content is neither created nor endorsed by Google. - Contact form owner - Terms of Service - Privacy Policy
+Does this form look suspicious? Report
+
+Google Forms
